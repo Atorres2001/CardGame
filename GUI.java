@@ -14,8 +14,9 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.event.AncestorListener;
 
-public class GUI extends JFrame implements ActionListener {
+public class GUI extends JFrame {
 	private JFrame frame;
 	private JPanel panel;
 	private JLabel label;
@@ -59,48 +60,60 @@ public class GUI extends JFrame implements ActionListener {
 		select.setBounds(600,600,80,30);
 		panel.add(select);
 		
+		
+		//Starts Game
+		Game game = new Game();
+		outputText.append("Welcome, to the Joker Game. \n "
+				+ "the objective of the game is to get\n rid of all your cards \n"
+				+ "by forming pairs. but there is one\n Joker card that cannot \n"
+				+ "form a pair. \n");
+		
+		//set up game
+		game.gameSetup();
+		
+		//remove pairs
+		outputText.append("Cards are dealt and pairs are \nbeing removed. pick a number");
+		game.checkingForPairs();
+		
 		//allow user to choose a card from the computer 
-		JButton pick = new JButton(new AbstractAction("Pick") {
-			
-			public void actionPerformed(ActionEvent e) {
-				game.playerturn();
-				
-			}
-			
-		});
+		JButton pick = new JButton("Pick");
+		
 		pick.setBounds(500,600,80,30);
 		panel.add(pick);
 		
+		//
+		select.addAncestorListener( (AncestorListener) new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int tempInt = (int) select.getValue();
+				game.setPlayerChoosenIndex(tempInt);
+				
+			}
+		});
 		
 		
-		
-		
+		pick.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				outputText.setText("");
+				game.playerTurn();
+				
+			}
+		});
 		
 		
 		
 	
 		
 		frame.setVisible(true);
-
-		
-		
-		
-		
-		
-		
 	}
 	
 	public static void main (String[] args) {
-		new GUI();
+		Gui g  = new GUI();
 		
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
-
-
