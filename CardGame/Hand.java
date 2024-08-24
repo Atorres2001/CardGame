@@ -3,6 +3,7 @@
  * this class is the hand class that will hold the cards of each player
  * this class has array list that will hold all the card
  */
+package CardGame;
 
 import java.util.ArrayList;
 import java.util.Collections;

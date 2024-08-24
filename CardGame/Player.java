@@ -2,6 +2,8 @@
  * author: alex torres
  * this class is the player class. this player class has a hand that will store cards.
  */
+package CardGame;
+
 public class Player {
 	//hand of player that will holds the cards
 	private Hand hand;
