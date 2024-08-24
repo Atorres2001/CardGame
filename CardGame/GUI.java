@@ -2,6 +2,8 @@
  * author chris Lara-Betancourt
  * 
  */
+package CardGame;
+
 import java.awt.event.ActionEvent;
 
 import java.awt.event.ActionListener;
@@ -111,7 +113,7 @@ public class GUI extends JFrame {
 	}
 	
 	public static void main (String[] args) {
-		Gui g  = new GUI();
+		GUI g  = new GUI();
 		
 	}
 

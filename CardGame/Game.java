@@ -3,6 +3,8 @@
  * this is the games class that will run the game. this class will create the deck, player, and hand. this class
  * will also will run each step of the game 
  */
+package CardGame;
+
 public class Game {
 	
 	//deck of cards
@@ -38,12 +40,14 @@ public class Game {
 		//shuffle deck
 		deck.shuffleDeck();
 		
-		//create hands
-		//hand for player. half the deck is delt
-		 playerHand = new Hand( deck.dealFirstHalf());
-		
-		//hand for computer player. second half is delt
-		 computerHand = new Hand( deck.dealSecondhalf());
+		// Instancia de DeckDealer para manejar la distribución del mazo
+		DeckDealer dealer = new DeckDealer();
+
+		// Crear la mano del jugador usando la primera mitad del mazo
+		playerHand = new Hand(dealer.dealFirstHalf(deck));
+
+		// Crear la mano del jugador de computadora usando la segunda mitad del mazo
+		computerHand = new Hand(dealer.dealSecondHalf(deck));
 		
 		//add hand to players
 		
